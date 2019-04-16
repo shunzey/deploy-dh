@@ -1,17 +1,16 @@
 let textmap = [
-    'zero',
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine'
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four'
 ]
 
-export default function () {
-    var i = Math.trunc(Math.random() * 10)
-    return textmap[i]
+module.exports = {
+  num2text(num) {
+    return textmap[num]
+  },
+  random5() {
+    return Math.trunc(Math.random() * 5)
+  }
 }
