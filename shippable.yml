@@ -8,6 +8,7 @@ language: node_js
 
 env:
   global:
+    - TEST_RESULTS_DIR=$SHIPPABLE_REPO_DIR/shippable/testresults
     - TESTS_LOC_DIR=$SHIPPABLE_REPO_DIR/test
     - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
     - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
