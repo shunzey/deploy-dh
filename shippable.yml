@@ -2,11 +2,12 @@ language: node_js
 node_js:
   - 10.15.3
 
-# # use this to control what branches get built.
-# # http://docs.shippable.com/ci/advancedOptions/branches/
-# branches:
-#   only:
-#     - master
+# use this to control what branches get built.
+# http://docs.shippable.com/ci/advancedOptions/branches/
+branches:
+  only:
+    - master
+    - develop
 
 env:
   global:
