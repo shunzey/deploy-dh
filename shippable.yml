@@ -11,13 +11,24 @@ branches:
 
 env:
   global:
-    - JEST_JUNIT_OUTPUT=$SHIPPABLE_REPO_DIR/shippable/testresults/testresults.xml
-    - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
     - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
     - REPO=shunzey/shippuble
 
 build:
   ci:
     - shippable_retry npm install
-    # Testresult must be in junit xml format and located into shippable/testresults folder.
+    # Testresult must be in junit xml format and located into shippable/testresults directory.
+    # Code coverage must be in cobertura format and located into shippable/codecoverage directory.
     - npm test -- --coverage
+
+  post_ci:
+    - 'if [ $IS_PULL_REQUEST == "false" ] ; then docker build -t $REPO:$BRANCH.$BUILD_NUMBER .; fi'
+    - 'if [ $IS_PULL_REQUEST == "false" ] ; then docker push $REPO:$BRANCH.$BUILD_NUMBER ; fi'
+
+integrations:
+  hub:
+    - integrationName: dockerhub-keys
+      type: dockerRegistryLogin
+#     branches:
+#       only:
+#         - master
