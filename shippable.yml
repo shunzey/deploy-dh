@@ -17,6 +17,7 @@ env:
 build:
   ci:
     - shippable_retry npm install
+    - npm run build
     # Testresult must be in junit xml format and located into shippable/testresults directory.
     # Code coverage must be in cobertura format and located into shippable/codecoverage directory.
     - npm test -- --coverage
