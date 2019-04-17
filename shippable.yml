@@ -39,3 +39,5 @@ integrations:
       type: slack
       recipients:
         - "#general"
+      on_success: always
+      on_failure: always
