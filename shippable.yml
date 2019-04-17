@@ -11,8 +11,8 @@ branches:
 
 env:
   global:
-    - TEST_RESULTS_DIR=$SHIPPABLE_REPO_DIR/shippable/testresults
-    - TESTS_LOC_DIR=$SHIPPABLE_REPO_DIR/test
+    - JEST_SUITE_NAME=Jest-Test
+    - JEST_JUNIT_OUTPUT=$SHIPPABLE_REPO_DIR/shippable/testresults/testresults.xml
     - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
     - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
     - REPO=shunzey/shippuble
@@ -20,6 +20,6 @@ env:
 build:
   ci:
     - shippable_retry npm install
-    - mkdir -p $TEST_RESULTS_DIR && mkdir -p $CODE_COVERAGE_DIR
+    - mkdir -p $CODE_COVERAGE_DIR
     # Testresult must be in junit xml format and located into shippable/testresults folder.
-    - $MOD_LOC/mocha --recursive "$TESTS_LOC_DIR/**/*_test.js" -R mocha-junit-reporter --reporter-options mochaFile=$TEST_RESULTS_DIR/testresults.xml
+    - npm test
