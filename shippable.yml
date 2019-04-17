@@ -33,3 +33,9 @@ integrations:
       branches:
         only:
           - master
+
+  notifications:
+    - integrationName: slack-office
+      type: slack
+      recipients:
+        - "#general"
