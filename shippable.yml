@@ -11,7 +11,6 @@ branches:
 
 env:
   global:
-    - JEST_SUITE_NAME=Jest-Test
     - JEST_JUNIT_OUTPUT=$SHIPPABLE_REPO_DIR/shippable/testresults/testresults.xml
     - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
     - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
@@ -20,6 +19,5 @@ env:
 build:
   ci:
     - shippable_retry npm install
-    - mkdir -p $CODE_COVERAGE_DIR
     # Testresult must be in junit xml format and located into shippable/testresults folder.
-    - npm test
+    - npm test -- --coverage

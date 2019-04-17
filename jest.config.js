@@ -24,7 +24,7 @@ module.exports = {
   // collectCoverageFrom: null,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: "shippable/codecoverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
@@ -33,10 +33,11 @@ module.exports = {
 
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: [
-    "json",
+    // "json",
     "text",
-    "lcov",
-    "clover"
+    // "lcov",
+    // "clover",
+    "cobertura"
   ],
 
   // An object that configures minimum threshold enforcement for coverage results
@@ -95,7 +96,10 @@ module.exports = {
 
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
-  reporters: [ "default", "jest-junit" ],
+  reporters: [
+      "default",
+      [ "jest-junit", { suiteName: "Jest tests", outputDirectory: "shippable/testresults" } ]
+  ],
 
   // Automatically reset mock state between every test
   // resetMocks: false,
